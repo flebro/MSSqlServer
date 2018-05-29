@@ -70,18 +70,18 @@ INSERT INTO [AddressBook].[dbo].[Contact]
 	,[IdentifierCivility]
 )
 VALUES
-	(1,		N'Benjamin',	N'DAGUÉ',	'12-24-1987',	N'benjamin.dague@etskirsch.fr',		1)
-	,(2,	N'Guillaume',	N'KIRSCH',	'03-01-1980',	N'guillaume.kirsch@etskirsch.fr',	1)
-	,(3,	N'Jean',		N'DUPONT',	'06-05-1990',	NULL,								1)
-	,(4,	N'Lucie',		N'DURAND',	'08-30-2000',	NULL,								2)
-	,(5,	N'Grégory',		N'DURAND',	'07-07-1999',	NULL,								1)
-	,(6,	N'Antoine',		N'TOTO',	'06-04-1985',	NULL,								1)
-	,(7,	NULL,			N'TOTO',	'06-04-1995',	NULL,								NULL)
-	,(8,	N'Camille',		N'TOTO',	'11-07-1997',	NULL,								2)
-	,(9,	N'Paul',		N'DUPOND',	'03-24-1993',	NULL,								1)
-	,(10,	N'Marion',		N'TUTU',	'03-24-1993',	NULL,								2)
-	,(11,	N'Marc',		N'DUPOND',	'10-10-1985',	NULL,								1)
-	,(12,	N'Marie',		N'DUPOND',	'10-10-1985',	NULL,								2)
+	(1,		N'Benjamin',	N'DAGUÉ',	'24/12/1987',	N'benjamin.dague@etskirsch.fr',		1)
+	,(2,	N'Guillaume',	N'KIRSCH',	'01/03/1980',	N'guillaume.kirsch@etskirsch.fr',	1)
+	,(3,	N'Jean',		N'DUPONT',	'05/06/1990',	NULL,								1)
+	,(4,	N'Lucie',		N'DURAND',	'30/08/2000',	NULL,								2)
+	,(5,	N'Grégory',		N'DURAND',	'07/07/1999',	NULL,								1)
+	,(6,	N'Antoine',		N'TOTO',	'04/06/1985',	NULL,								1)
+	,(7,	NULL,			N'TOTO',	'04/06/1995',	NULL,								NULL)
+	,(8,	N'Camille',		N'TOTO',	'07/11/1997',	NULL,								2)
+	,(9,	N'Paul',		N'DUPOND',	'24/03/1993',	NULL,								1)
+	,(10,	N'Marion',		N'TUTU',	'24/03/1993',	NULL,								2)
+	,(11,	N'Marc',		N'DUPOND',	'10/10/1985',	NULL,								1)
+	,(12,	N'Marie',		N'DUPOND',	'10/10/1985',	NULL,								2)
 	,(13,	N'Patrice',		N'LOULOU',	NULL,			NULL,								1)
 	,(14,	N'Ludivine',	N'LOULOU',	NULL,			NULL,								2);
 
@@ -133,3 +133,60 @@ VALUES
 	,(9,	9)
 	,(10,	10)
 	,(11,	11);
+
+/*
+
+Pour récupérer la dernière valeur IDENTITY générée :
+
+IDENT_CURRENT :		Pour un table spécifiée, dans toutes les sessions et pour tous les scopes.
+@@IDENTITY :		Pour toutes les tables, dans la session en cours et dans tous les scopes.
+SCOPE_IDENTITY :	Pour toutes les tables, dans la session en cours dans le scope en cours.
+
+*/
+
+--SELECT
+--	@@IDENTITY
+--	,SCOPE_IDENTITY()
+--	,IDENT_CURRENT('[AddressBook].[dbo].[AddressContact]')
+
+UPDATE
+	[AddressBook].[dbo].[City]
+SET
+	[Name] = LOWER(Name)
+
+UPDATE
+	[AddressBook].[dbo].[City]
+SET
+	[Name] = UPPER(Name)
+WHERE
+	[Name] = 'PARIS'
+
+
+--Collate permet de modifier le classement utilisé pour la requête.
+--C'est pratique par exemple pour comparrer des chaînes avec des accents.
+SELECT 
+	IIF('é' = 'e' COLLATE Latin1_General_CI_AI, 1, 0) 
+	,IIF('é' = 'e', 1, 0) 
+
+--Sur une oppération de concaténation/calcul avec '+', une valeur NULL va rendre le résultat NULL
+--La fonction CONCAT va gérer ce cas pour les chaînes.
+--Autrement, il est possible d'utiliser la fonction ISNULL
+SELECT 
+	CONCAT('test','chaine2', NULL)
+	,'test' + 'chaine2' + ''
+	,'test' + 'chaine2' + ISNULL(NULL, '')
+
+SELECT 
+	t0.Identifier
+	,CONCAT(t0.LastName, ' ' + t0.FirstName)	AS FullName
+	,t0.BirthDate
+	,(CONVERT(INT, CONVERT(CHAR(8), GETDATE(), 112)) - CONVERT(CHAR(8),t0.BirthDate, 112)) /10000	AS Age
+FROM
+	Contact AS t0
+
+ALTER TABLE [AddressBook].[dbo].[Contact]
+ADD
+	Age AS ((CONVERT(INT, CONVERT(CHAR(8), GETDATE(), 112)) - CONVERT(CHAR(8),BirthDate, 112)) /10000)
+	,FullName AS (CONCAT(LastName, ' ' + FirstName)) PERSISTED
+
+SELECT * FROM Contact

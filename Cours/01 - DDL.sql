@@ -201,7 +201,6 @@ ADD
 GO
 DECLARE @sqlQuery NVARCHAR(MAX); --Déclaration d'une variable
 
-/*
 --Construction d'une chaîne pour supprimer les contraintes DEFAULT existantes
 --STRING_AGG est une fonction de concaténation de chaîne pour obtenir en une ligne le résultat de plusieurs lignes.
 SELECT 
@@ -219,7 +218,7 @@ FROM
 
 PRINT @sqlQuery					--PRINT affiche une variable dans la console
 EXEC sp_executesql @sqlQuery	--Exécute du code SQL de manière dynamique.
-*/
+
 
 /*
 Les contraintes ont pour but de programmer les règles de gestion au niveau des colonnes.
