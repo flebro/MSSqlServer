@@ -1,0 +1,9 @@
+Code;Nom;Type;Adresse1;Adresse2;Adresse3;Adresse4;Latitude;Longitude;EMail;CodeDiplome;Capacite
+351254;Campus Beaulieu;Université;263 Avenue Général Leclerc;;35700 RENNES;;48.116131;1.636539;accueil@beaulieu.fr;20329-1;20
+495324;Campus universitaire de Belle Beille;Université;4 Boulevard de Lavoisier;;49000 ANGERS;;47.480157;accueil@bellebeille.fr;-0.601839;24423-1;80
+492657;Lycée professionnel joseph wresinski;Lycée;3 Rue du Margat;;49000 ANGERS;;47.484727;-0.560636;accueil@josephwresinski.fr;20329-1;20
+695468;Université Jean Moulin Lyon 3;Université;6 Cours Albert Thomas;;69008 LYON;;45.748992;4.861341;accueil@universitelyon3.fr;24423-1;200
+695468;Université Jean Moulin Lyon 3;Université;6 Cours Albert Thomas;;69008 LYON;;45.748992;4.861341;accueil@universitelyon3.fr;24423-2;100
+695468;Université Jean Moulin Lyon 3;Université;6 Cours Albert Thomas;;69008 LYON;;45.748992;4.861341;accueil@universitelyon3.fr;24430-1;150
+182546;Faculté de Droit;Université;11 Rue Michel Marest;Salle d'Armes, Technopôle Lahitolle;18000 BOURGES;;47.080496;2.416917;accueil@facdroitbourges.fr;24423-1;120
+182546;Faculté de Droit;Université;11 Rue Michel Marest;Salle d'Armes, Technopôle Lahitolle;18000 BOURGES;;47.080496;2.416917;accueil@facdroitbourges.fr;24423-2;100

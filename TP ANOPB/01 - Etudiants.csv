@@ -1,0 +1,7 @@
+Code;Nom;Prénom;Naissance;Commune naissance;Adresse1;Adresse2;Adresse3;Adresse4;Latitude;Longitude
+A001;DUPONT;Jean;05/04/1990;RENNES (35);5 rue du Champ Jacquet;;35000 RENNES;;48.113092;-1.680326
+A002;LAFONT;Jacques;24/10/1990;ANGERS (49);6 rue du Champ de Bataille;;49100 ANGERS;;47.481869;-0.565094
+A003;PETIT;Julie;15/07/1989;LYON (69);105 rue de la Part Dieu;;69003 LYON;;45.759836;4.851246
+A004;LAMBERT;Jeanne;01/11/1991;BREST (29);44 rue Jules Ferry;;29200 BREST;;48.400244;-4.477864
+A005;DUPONT;Julie;05/04/1989;RENNES (35);5 rue du Champ Jacquet;;35000 RENNES;;48.113092;-1.680326
+A006;LAFONT;Jean;01/05/1989;ANGERS (49);6 rue du Champ de Bataille;;49100 ANGERS;;47.481869;-0.565094
